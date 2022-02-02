@@ -103,7 +103,7 @@
       <bpmn:incoming>Flow_0u5jo8z</bpmn:incoming>
       <bpmn:outgoing>Flow_11bczuq</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:userTask id="Activity_07nreqr" name="Assign Approvers" camunda:formRef="assign_approver.form" camunda:formRefBinding="latest">
+    <bpmn:userTask id="Activity_07nreqr" name="Assign Approvers" camunda:formKey="embedded:app:forms/assign_approver.html" camunda:assignee="admin">
       <bpmn:incoming>Flow_1ckn2bu</bpmn:incoming>
       <bpmn:outgoing>Flow_1epxeda</bpmn:outgoing>
     </bpmn:userTask>
@@ -119,7 +119,7 @@
       <bpmn:incoming>Flow_1l8ahco</bpmn:incoming>
       <bpmn:outgoing>Flow_1n4wzsv</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_1rwq441" name="Sign Remuneration">
+    <bpmn:userTask id="Activity_1rwq441" name="Sign Remuneration" camunda:assignee="admin">
       <bpmn:incoming>Flow_0qc3pml</bpmn:incoming>
       <bpmn:outgoing>Flow_1l8ahco</bpmn:outgoing>
     </bpmn:userTask>
