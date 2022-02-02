@@ -2,22 +2,17 @@
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0ikmj6x" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
   <decision id="damageAmount" name="Damage Amount">
     <decisionTable id="DecisionTable_13775hg" hitPolicy="FIRST">
-      <input id="Input_1" label="Damage Amount">
-        <inputExpression id="InputExpression_1" typeRef="string">
+      <input id="Input_1" label="Damage Amount" biodi:width="192">
+        <inputExpression id="InputExpression_1" typeRef="integer">
           <text>damageAmount</text>
         </inputExpression>
       </input>
       <input id="InputClause_0fanfrl" label="Damage Amount">
-        <inputExpression id="LiteralExpression_11hdl57" typeRef="string">
+        <inputExpression id="LiteralExpression_11hdl57" typeRef="integer">
           <text>damageAmount</text>
         </inputExpression>
       </input>
-      <input id="InputClause_1jbrehb" label="Damage Type">
-        <inputExpression id="LiteralExpression_1u9wja2" typeRef="string">
-          <text>damageType</text>
-        </inputExpression>
-      </input>
-      <output id="OutputClause_0h25hfa" label="Approver" name="approver" typeRef="boolean" biodi:width="192" />
+      <output id="OutputClause_0h25hfa" label="Approver" name="approver" typeRef="string" biodi:width="192" />
       <rule id="DecisionRule_0yih4zt">
         <description></description>
         <inputEntry id="UnaryTests_08k76ka">
@@ -26,11 +21,8 @@
         <inputEntry id="UnaryTests_0icy01z">
           <text>&lt;=200</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1jwops3">
-          <text>Scratch</text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_0o3h0ib">
-          <text>Assessor</text>
+          <text>Secretary</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bh6lif">
@@ -39,9 +31,6 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0s4w3tp">
           <text>&lt;=500</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1oibhc7">
-          <text>Dent</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_09n1l8k">
           <text>Assessor</text>
@@ -54,9 +43,6 @@
         <inputEntry id="UnaryTests_15q5ny5">
           <text>&lt;=1000</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0wtax6e">
-          <text>Engine Damage</text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_0rmqfvn">
           <text>Assessor</text>
         </outputEntry>
@@ -67,9 +53,6 @@
         </inputEntry>
         <inputEntry id="UnaryTests_1o65wcr">
           <text>&lt;=3000</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0cgk2mm">
-          <text>Gearbox Damage</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1ylt8ke">
           <text>Assessor</text>
@@ -82,9 +65,6 @@
         <inputEntry id="UnaryTests_06pv07i">
           <text>&lt;=30000</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1uiq258">
-          <text>Stolen</text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_0qug3fp">
           <text>Superior</text>
         </outputEntry>
@@ -95,9 +75,6 @@
         </inputEntry>
         <inputEntry id="UnaryTests_0bd97vd">
           <text>&lt;=5000000</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1whvuix">
-          <text>Mass Carabolism</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0czhysm">
           <text>Superior</text>

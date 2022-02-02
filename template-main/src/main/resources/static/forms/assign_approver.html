@@ -6,49 +6,23 @@
                        cam-variable-type="String"
                        type="text"
                        name="customer"
-                       value="Test" /></td>
-        </tr><tr>
-        <td>Damage:</td>
-        <td><input cam-variable-name="damage"
-                   cam-variable-type="String"
-                   type="text"
-                   name="damage"
-                   value="User"/></td>
-    </tr><tr>
+                       value="Customer" /></td>
+        </tr>
+        <tr>
         <td>Damage Costs:</td>
         <td><input cam-variable-name="damageAmount"
-                   cam-variable-type="String"
-                   type="text"
+                   cam-variable-type="Integer"
+                   type="number"
                    name="damageAmount"
-                   value="User"/></td>
+                   value="Amount in €"/></td>
     </tr>
         <tr>
         <td>Approver:</td>
-        <td><input cam-variable-name="customerEmail"
+        <td><input cam-variable-name="approver"
                    cam-variable-type="String"
                    type="text"
-                   name="customerEmail"
-                    value="test.user@email.at"/></td>
+                   name="approver"
+                    value="Approver"/></td>
     </tr>
-        <tr>
-    <h1>User Data Checked?</h1>
-    <div class="form-group">
-        <div class="col-md-10 col-md-offset-2">
-            <div class="checkbox">
-                <label>
-                    <input cam-variable-name="approved"
-                           cam-variable-type="Boolean"
-                           type="checkbox"
-                           name="approved"
-                           class="form-control" />
-                    Yes
-                    <br>
-                    <input type="checkbox"/>
-                    No
-                </label>
-            </div>
-        </div>
-    </div>
-        </tr>
     </table>
 </form>
