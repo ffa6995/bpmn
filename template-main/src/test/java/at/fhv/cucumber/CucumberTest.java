@@ -8,3 +8,4 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(features = "src/test/resources/")
 public class CucumberTest {
 }
+
