@@ -13,7 +13,9 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="template" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -190,5 +192,16 @@
     <orderEntry type="library" name="Maven: junit:junit:4.13" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:cucumber-spring:6.11.0" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:barcodes:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:font-asian:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:forms:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:hyph:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:io:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:kernel:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:layout:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:pdfa:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:sign:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:styled-xml-parser:7.1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:svg:7.1.6" level="project" />
   </component>
 </module>

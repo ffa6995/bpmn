@@ -16,7 +16,7 @@
       <bpmn:incoming>Flow_0f3v8jc</bpmn:incoming>
       <bpmn:outgoing>Flow_1oqct7z</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_0urcg65" name="Prepare bank transfer" camunda:formKey="embedded:app:forms/prepare-bank-transfer.html">
+    <bpmn:userTask id="Activity_0urcg65" name="Prepare bank transfer">
       <bpmn:incoming>Flow_1oqct7z</bpmn:incoming>
       <bpmn:outgoing>Flow_1arc731</bpmn:outgoing>
       <bpmn:property id="Property_1fe3jc4" name="__targetRef_placeholder" />
@@ -25,7 +25,7 @@
         <bpmn:targetRef>Property_1fe3jc4</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1edgjnz" name="Financial Accounting System" dataStoreRef="FinancialAccountingSystem" />
+    <bpmn:dataStoreReference id="DataStoreReference_1edgjnz" name="Financial Accounting System" />
     <bpmn:endEvent id="Event_1yi1hum" name="case completed">
       <bpmn:incoming>Flow_1arc731</bpmn:incoming>
     </bpmn:endEvent>
@@ -37,25 +37,25 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="HandleCase">
-      <bpmndi:BPMNEdge id="Flow_07cvta4_di" bpmnElement="Flow_07cvta4">
-        <di:waypoint x="188" y="230" />
-        <di:waypoint x="240" y="230" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0n42kh1_di" bpmnElement="Flow_0n42kh1">
-        <di:waypoint x="340" y="230" />
-        <di:waypoint x="400" y="230" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0f3v8jc_di" bpmnElement="Flow_0f3v8jc">
-        <di:waypoint x="500" y="230" />
-        <di:waypoint x="570" y="230" />
+      <bpmndi:BPMNEdge id="Flow_1arc731_di" bpmnElement="Flow_1arc731">
+        <di:waypoint x="860" y="230" />
+        <di:waypoint x="972" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1oqct7z_di" bpmnElement="Flow_1oqct7z">
         <di:waypoint x="670" y="230" />
         <di:waypoint x="760" y="230" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1arc731_di" bpmnElement="Flow_1arc731">
-        <di:waypoint x="860" y="230" />
-        <di:waypoint x="972" y="230" />
+      <bpmndi:BPMNEdge id="Flow_0f3v8jc_di" bpmnElement="Flow_0f3v8jc">
+        <di:waypoint x="500" y="230" />
+        <di:waypoint x="570" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n42kh1_di" bpmnElement="Flow_0n42kh1">
+        <di:waypoint x="340" y="230" />
+        <di:waypoint x="400" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07cvta4_di" bpmnElement="Flow_07cvta4">
+        <di:waypoint x="188" y="230" />
+        <di:waypoint x="240" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_096y7yz_di" bpmnElement="Event_096y7yz">
         <dc:Bounds x="152" y="212" width="36" height="36" />
@@ -72,16 +72,16 @@
       <bpmndi:BPMNShape id="Activity_0urcg65_di" bpmnElement="Activity_0urcg65">
         <dc:Bounds x="760" y="190" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1yi1hum_di" bpmnElement="Event_1yi1hum">
-        <dc:Bounds x="972" y="212" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="951" y="255" width="78" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DataStoreReference_1edgjnz_di" bpmnElement="DataStoreReference_1edgjnz">
         <dc:Bounds x="858" y="49" width="63" height="61" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="862" y="115" width="54" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yi1hum_di" bpmnElement="Event_1yi1hum">
+        <dc:Bounds x="972" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="951" y="255" width="78" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataInputAssociation_1druy3k_di" bpmnElement="DataInputAssociation_1druy3k">
