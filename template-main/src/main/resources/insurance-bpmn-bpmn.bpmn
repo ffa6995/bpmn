@@ -36,16 +36,6 @@
       <bpmn:outgoing>Flow_0wekg2h</bpmn:outgoing>
       <bpmn:outgoing>Flow_1h6x5pl</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="approveCase" name="Approve Case" camunda:formKey="embedded:app:forms/approve-case.html" camunda:candidateGroups="${approver}">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="Approver">${approver}</camunda:inputParameter>
-          <camunda:outputParameter name="Approver">${approver}</camunda:outputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0mfh0jy</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ehae20</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:userTask id="recordDamageCase" name="Record Damage Case" camunda:formKey="embedded:app:forms/assign_approver.html" camunda:assignee="admin">
       <bpmn:incoming>Flow_1ckn2bu</bpmn:incoming>
       <bpmn:outgoing>Flow_1epxeda</bpmn:outgoing>
@@ -72,6 +62,7 @@
         <camunda:out source="paid" target="paid" />
         <camunda:in source="customer" target="customer" />
         <camunda:in source="approver" target="approver" />
+        <camunda:in source="damageReport" target="damageReport" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0wekg2h</bpmn:incoming>
       <bpmn:outgoing>Flow_0u5jo8z</bpmn:outgoing>
@@ -90,6 +81,16 @@
     <bpmn:sequenceFlow id="Flow_0mfh0jy" sourceRef="examineDamage" targetRef="approveCase" />
     <bpmn:sequenceFlow id="Flow_0ehae20" sourceRef="approveCase" targetRef="Gateway_0aiz27f" />
     <bpmn:sequenceFlow id="Flow_0nvtaro" sourceRef="Activity_1ovzdf8" targetRef="Event_0x5woi7" />
+    <bpmn:userTask id="approveCase" name="Approve Case" camunda:formKey="embedded:app:forms/approve-case.html" camunda:candidateGroups="${approver}">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Approver">${approver}</camunda:inputParameter>
+          <camunda:outputParameter name="Approver">${approver}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0mfh0jy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ehae20</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_061mfey">
@@ -97,10 +98,10 @@
         <dc:Bounds x="160" y="80" width="1360" height="370" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_07qu4vl_di" bpmnElement="Lane_07qu4vl" isHorizontal="true">
-        <dc:Bounds x="190" y="295" width="1330" height="155" />
+        <dc:Bounds x="190" y="310" width="1330" height="140" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1ikppvv_di" bpmnElement="Lane_1ikppvv" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1330" height="215" />
+        <dc:Bounds x="190" y="80" width="1330" height="230" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_11bczuq_di" bpmnElement="Flow_11bczuq">
         <di:waypoint x="1390" y="150" />
@@ -142,12 +143,12 @@
       <bpmndi:BPMNEdge id="Flow_0mfh0jy_di" bpmnElement="Flow_0mfh0jy">
         <di:waypoint x="600" y="190" />
         <di:waypoint x="630" y="190" />
-        <di:waypoint x="630" y="370" />
-        <di:waypoint x="700" y="370" />
+        <di:waypoint x="630" y="390" />
+        <di:waypoint x="700" y="390" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ehae20_di" bpmnElement="Flow_0ehae20">
-        <di:waypoint x="800" y="370" />
-        <di:waypoint x="900" y="370" />
+        <di:waypoint x="800" y="390" />
+        <di:waypoint x="900" y="390" />
         <di:waypoint x="900" y="265" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0nvtaro_di" bpmnElement="Flow_0nvtaro">
@@ -177,9 +178,6 @@
           <dc:Bounds x="808.5" y="262" width="81" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1sgcynt_di" bpmnElement="approveCase">
-        <dc:Bounds x="700" y="330" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05gpsfm_di" bpmnElement="recordDamageCase">
         <dc:Bounds x="340" y="150" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -200,6 +198,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rezth2_di" bpmnElement="handleCase" bioc:stroke="#1e88e5" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#1e88e5">
         <dc:Bounds x="1000" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1sgcynt_di" bpmnElement="approveCase">
+        <dc:Bounds x="700" y="350" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
