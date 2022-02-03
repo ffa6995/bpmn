@@ -1,0 +1,60 @@
+<form class="form-horizontal"
+      role="form">
+
+  <p>Do you approve this case?</p>
+
+  <div class="form-group">
+    <label class="control-label col-md-2">Customer</label>
+    <div class="col-md-10">
+      <input cam-variable-name="customer"
+             type="text"
+             name="customer"
+             readonly="true"
+             class="form-control" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-2">Approver</label>
+    <div class="col-md-10">
+      <input cam-variable-name="approver"
+             type="text"
+             name="approver"
+             readonly="true"
+             class="form-control" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-2">Damage Amount</label>
+    <div class="col-md-10">
+      <input cam-variable-name="damageAmount"
+             type="text"
+             name="amount"
+             readonly="true"
+             class="form-control" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-2">Damage Type</label>
+    <div class="col-md-10">
+      <input cam-variable-name="damageType"
+             type="text"
+             name="damageType"
+             readonly="true"
+             class="form-control" />
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="checkbox">
+        <label>
+          <input cam-variable-name="approved"
+                 cam-variable-type="Boolean"
+                 type="checkbox"
+                 name="approved"
+                 class="form-control" />
+          Do you approve?
+        </label>
+      </div>
+    </div>
+  </div>
+</form>
