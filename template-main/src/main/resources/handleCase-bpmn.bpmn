@@ -12,7 +12,7 @@
       <bpmn:incoming>Flow_1h1jnju</bpmn:incoming>
       <bpmn:outgoing>Flow_18lmhr3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_14u3mr5" name="Calculate Remuneration" camunda:class="at.fhv.CalculateRemuneration">
+    <bpmn:serviceTask id="Activity_14u3mr5" name="Calculate Remuneration" camunda:class="at.fhv.CalculateRemunerationDelegate">
       <bpmn:incoming>Flow_0g8v7x3</bpmn:incoming>
       <bpmn:outgoing>Flow_088dcro</bpmn:outgoing>
     </bpmn:serviceTask>

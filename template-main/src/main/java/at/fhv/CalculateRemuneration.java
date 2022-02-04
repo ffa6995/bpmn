@@ -1,48 +1,57 @@
 package at.fhv;
 
-import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.camunda.bpm.engine.variable.value.FileValue;
+public class CalculateRemuneration {
+    private String damageType = "";
+    private Double damageAmount = 0.0;
+    private Double remunerationAmount = 0.0;
+    private Double fixedRate = 0.0;
+    public CalculateRemuneration(String damageType, double damageAmount) {
+        this.damageType = damageType;
+        this.damageAmount = damageAmount;
+    }
 
-import javax.inject.Named;
-
-@Named
-public class CalculateRemuneration implements JavaDelegate {
-
-    @Override
-    public void execute(DelegateExecution execution) throws Exception {
-
-        Double damageAmount = (Double) execution.getVariable("damageAmount");
-        String damageType = (String) execution.getVariable("damageType");
-
-        Double remunerationAmount = 0.0;
-        Double fixedRate = 0.0;
-
-        switch (damageType) {
+    public double calculateRemuneration() {
+        switch (this.damageType) {
             case "carScratch":
-                fixedRate = 0.95;
-                remunerationAmount = damageAmount * fixedRate;
+                this.fixedRate = 0.95;
+                this.remunerationAmount = this.damageAmount * this.fixedRate;
                 break;
             case "stormDamage":
-                fixedRate = 0.92;
-                remunerationAmount = damageAmount * fixedRate;
+                this.fixedRate = 0.92;
+                this.remunerationAmount = this.damageAmount * this.fixedRate;
                 break;
             case "gearboxDamage":
-                fixedRate = 0.87;
-                remunerationAmount = damageAmount * fixedRate;
+                this.fixedRate = 0.87;
+                this.remunerationAmount = this.damageAmount * this.fixedRate;
                 break;
             case "totalDamage":
-                fixedRate = 0.80;
-                remunerationAmount = damageAmount * fixedRate;
+                this.fixedRate = 0.80;
+                this.remunerationAmount = this.damageAmount * this.fixedRate;
                 break;
             case "multipleCollision":
-                fixedRate = 0.75;
-                remunerationAmount = damageAmount * fixedRate;
+                this.fixedRate = 0.75;
+                this.remunerationAmount = this.damageAmount * this.fixedRate;
                 break;
             default:
                 break;
 
         }
-        execution.setVariable("remunerationAmount", remunerationAmount);
+        return this.remunerationAmount;
+    }
+
+    public String getDamageType() {
+        return damageType;
+    }
+
+    public Double getDamageAmount() {
+        return damageAmount;
+    }
+
+    public Double getRemunerationAmount() {
+        return remunerationAmount;
+    }
+
+    public Double getFixedRate() {
+        return fixedRate;
     }
 }
