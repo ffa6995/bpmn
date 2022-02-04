@@ -22,7 +22,7 @@ import com.itextpdf.layout.property.TextAlignment;
 
 public class CreatePDFDocument {
 
-    public static void createFile(String pdfDocPath, String name, String damageType, Integer damageAmount) throws IOException {
+    public static void createFile(String pdfDocPath, String name, String damageType, Double remunerationAmount) throws IOException {
 
         PdfWriter writer = new PdfWriter(pdfDocPath);
 
@@ -38,7 +38,7 @@ public class CreatePDFDocument {
                 +LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))).setFontSize(9);
         Text remuneration = new Text("Remuneration\n").setFontSize(12).setBold();
         Text endText = new Text("\nWe issue your remuneration of the case: "+damageType +"."
-                +"\nDamage amount: " +damageAmount
+                +"\nDamage amount: " +remunerationAmount
                 +"\nWe have transferred the amount to your bank account.").setFontSize(11);
         Text greetings = new Text("Best regards!").setFontSize(11);
         Text team = new Text("Insurance GmbH").setFontSize(11);

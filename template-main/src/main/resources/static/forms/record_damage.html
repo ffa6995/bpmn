@@ -11,17 +11,31 @@
 
         <tr>
             <td>Damage Type:</td>
-            <td><input cam-variable-name="damageType"
-                       cam-variable-type="String"
-                       type="text"
-                       name="damageType"
-                       value="Damage Type" /></td>
+            <td>
+                <div class="controls">
+                    <!--select box -->
+                    <select id="damageType"
+                            required
+                            class="form-control"
+                            name="damageType"
+                            cam-variable-name="damageType"
+                            cam-variable-type="String"
+                            value="carScratch"
+                    >
+                        <option value="carScratch">Car Scratch</option>
+                        <option value="stormDamage">Storm Damage</option>
+                        <option value="gearboxDamage">Gearbox Damage</option>
+                        <option value="totalDamage">Total Damage</option>
+                        <option value="multipleCollision">Multiple Collision</option>
+                    </select>
+                </div>
+            </td>
         </tr>
 
         <tr>
         <td>Damage Costs:</td>
         <td><input cam-variable-name="damageAmount"
-                   cam-variable-type="Integer"
+                   cam-variable-type="Double"
                    type="number"
                    name="damageAmount"
                    value="Amount in €"/></td>

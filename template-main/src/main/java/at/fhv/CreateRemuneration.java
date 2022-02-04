@@ -16,7 +16,7 @@ public class CreateRemuneration implements JavaDelegate {
         // read camunda variables
         String customer = (String) execution.getVariable("customer");
         String damageType = (String) execution.getVariable("damageType");
-        Integer damageAmount = (Integer) execution.getVariable("damageAmount");
+        Double remunerationAmount = (Double) execution.getVariable("remunerationAmount");
         boolean approved = (Boolean) execution.getVariable("approved");
 
         if (approved) {
@@ -38,9 +38,7 @@ public class CreateRemuneration implements JavaDelegate {
             execution.setVariable("pdfDocPath", pdfDocPath);
             execution.setVariable("documentName", documentName);
 
-            CreatePDFDocument.createFile(pdfDocPath, customer, damageType, damageAmount);
-
-            System.out.println(pdfDocPath);
+            CreatePDFDocument.createFile(pdfDocPath, customer, damageType, remunerationAmount);
         }
     }
 }

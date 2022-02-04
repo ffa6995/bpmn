@@ -36,7 +36,7 @@
       <bpmn:outgoing>Flow_0wekg2h</bpmn:outgoing>
       <bpmn:outgoing>Flow_1h6x5pl</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="recordDamageCase" name="Record Damage Case" camunda:formKey="embedded:app:forms/assign_approver.html" camunda:assignee="admin">
+    <bpmn:userTask id="recordDamageCase" name="Record Damage Case" camunda:formKey="embedded:app:forms/record_damage.html" camunda:assignee="admin">
       <bpmn:incoming>Flow_1ckn2bu</bpmn:incoming>
       <bpmn:outgoing>Flow_1epxeda</bpmn:outgoing>
     </bpmn:userTask>
