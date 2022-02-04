@@ -67,8 +67,8 @@ public class StepDefinition {
         assertEquals(damageType, "gearboxDamage");
     }
 
-    @Then("renumeration amount is {double}")
-    public void renumeration_amount_is2(Double zero) {
+    @Then("remuneration amount is {double}")
+    public void remuneration_amount_is2(Double zero) {
         Double remunerationAmount = calculator3.getRemunerationAmount();
         assertEquals(remunerationAmount, zero);
     }

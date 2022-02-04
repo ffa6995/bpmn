@@ -13,5 +13,5 @@ Feature: Calculate Remuneration Amount
   Scenario: There is no input for damage amount given:
     Given Damage amount is 0
     When there is damage type of gearboxDamage
-    Then renumeration amount is 0
+    Then remuneration amount is 0
 
