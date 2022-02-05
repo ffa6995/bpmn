@@ -1,15 +1,7 @@
-import at.fhv.CalculateRemuneration;
-import at.fhv.CalculateRemunerationDelegate;
-import at.fhv.CreateRemuneration;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.TaskService;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.withVariables;
-import static org.mockito.Mockito.*;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -25,7 +25,7 @@ public class CreateRemuneration implements JavaDelegate {
             stringPath = stringPath.substring(0, stringPath.lastIndexOf("\\") + 1);
 
             String documentName = customer + "-remuneration" + ".pdf";
-            String pdfDocPath = stringPath + "\\template-main\\remunerations\\" + documentName;
+            String pdfDocPath = stringPath + "\\insurance\\remunerations\\" + documentName;
 
             boolean checkIfExist = new File(pdfDocPath).exists();
 
