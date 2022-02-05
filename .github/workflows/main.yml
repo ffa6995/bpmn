@@ -24,12 +24,26 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: Change dir
+        run: cd ./template-main
+      
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+              java-version: '11'
+              distribution: 'adopt'
+              cache: maven
 
       - name: Generate JaCoCo Test Coverage Report
-        run: mvn jacoco:report
+        run: |
+              cd ./template-main
+              mvn jacoco:report
         
       - name: Generate PMD report
-        run: mvn pmd:pmd
+        run: |
+              cd ./template-main
+              mvn pmd:pmd
         
       - name: Push PMD report
         uses: jwgmeligmeyling/pmd-github-action@v1.2
