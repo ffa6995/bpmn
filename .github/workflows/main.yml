@@ -36,7 +36,9 @@ jobs:
               cache: maven
 
       - name: Generate JaCoCo Test Coverage Report
-        run: mvn jacoco:report
+        run: |
+              cd ./template-main
+              mvn jacoco:report
         
       - name: Generate PMD report
         run: mvn pmd:pmd
