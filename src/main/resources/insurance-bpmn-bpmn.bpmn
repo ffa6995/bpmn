@@ -9,22 +9,18 @@
         <bpmn:flowNodeRef>approveCase</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1ikppvv" name="Secretary">
-        <bpmn:flowNodeRef>Activity_005tiv5</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0j75mh6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0x5woi7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0aiz27f</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>recordDamageCase</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>examineDamage</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1dr1jq3</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1ovzdf8</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>handleCase</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>archiveCase</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>sendConfirmation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>sendRefusal</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:task id="Activity_005tiv5" name="Send Confirmation">
-      <bpmn:incoming>Flow_0u5jo8z</bpmn:incoming>
-      <bpmn:outgoing>Flow_11bczuq</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:endEvent id="Event_0j75mh6" name="Damage will be payed">
       <bpmn:incoming>Flow_11bczuq</bpmn:incoming>
     </bpmn:endEvent>
@@ -47,15 +43,7 @@
     <bpmn:startEvent id="StartEvent_1" name="Damage report">
       <bpmn:outgoing>Flow_1ckn2bu</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_1dr1jq3" name="Archive case">
-      <bpmn:incoming>Flow_1h6x5pl</bpmn:incoming>
-      <bpmn:outgoing>Flow_1g2zko5</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_1ovzdf8" name="Send Refusal">
-      <bpmn:incoming>Flow_1g2zko5</bpmn:incoming>
-      <bpmn:outgoing>Flow_0nvtaro</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:callActivity id="handleCase" name="Handle case" camunda:asyncAfter="true" calledElement="HandleCase">
+    <bpmn:callActivity id="handleCase" name="Handle case" calledElement="HandleCase">
       <bpmn:extensionElements>
         <camunda:in source="damageAmount" target="damageAmount" />
         <camunda:in source="damageType" target="damageType" />
@@ -68,20 +56,20 @@
       <bpmn:incoming>Flow_0wekg2h</bpmn:incoming>
       <bpmn:outgoing>Flow_0u5jo8z</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:sequenceFlow id="Flow_11bczuq" sourceRef="Activity_005tiv5" targetRef="Event_0j75mh6" />
-    <bpmn:sequenceFlow id="Flow_1h6x5pl" name="no" sourceRef="Gateway_0aiz27f" targetRef="Activity_1dr1jq3">
+    <bpmn:sequenceFlow id="Flow_11bczuq" sourceRef="sendConfirmation" targetRef="Event_0j75mh6" />
+    <bpmn:sequenceFlow id="Flow_1h6x5pl" name="no" sourceRef="Gateway_0aiz27f" targetRef="archiveCase">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0u5jo8z" sourceRef="handleCase" targetRef="Activity_005tiv5" />
+    <bpmn:sequenceFlow id="Flow_0u5jo8z" sourceRef="handleCase" targetRef="sendConfirmation" />
     <bpmn:sequenceFlow id="Flow_0wekg2h" name="yes" sourceRef="Gateway_0aiz27f" targetRef="handleCase">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1epxeda" sourceRef="recordDamageCase" targetRef="examineDamage" />
     <bpmn:sequenceFlow id="Flow_1ckn2bu" sourceRef="StartEvent_1" targetRef="recordDamageCase" />
-    <bpmn:sequenceFlow id="Flow_1g2zko5" sourceRef="Activity_1dr1jq3" targetRef="Activity_1ovzdf8" />
+    <bpmn:sequenceFlow id="Flow_1g2zko5" sourceRef="archiveCase" targetRef="sendRefusal" />
     <bpmn:sequenceFlow id="Flow_0mfh0jy" sourceRef="examineDamage" targetRef="approveCase" />
     <bpmn:sequenceFlow id="Flow_0ehae20" sourceRef="approveCase" targetRef="Gateway_0aiz27f" />
-    <bpmn:sequenceFlow id="Flow_0nvtaro" sourceRef="Activity_1ovzdf8" targetRef="Event_0x5woi7" />
+    <bpmn:sequenceFlow id="Flow_0nvtaro" sourceRef="sendRefusal" targetRef="Event_0x5woi7" />
     <bpmn:userTask id="approveCase" name="Approve Case" camunda:formKey="embedded:app:forms/approve-case.html" camunda:candidateGroups="${approver}">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -91,6 +79,18 @@
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0mfh0jy</bpmn:incoming>
       <bpmn:outgoing>Flow_0ehae20</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="archiveCase" name="Archive case">
+      <bpmn:incoming>Flow_1h6x5pl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g2zko5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="sendConfirmation" name="Send Confirmation">
+      <bpmn:incoming>Flow_0u5jo8z</bpmn:incoming>
+      <bpmn:outgoing>Flow_11bczuq</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="sendRefusal" name="Send Refusal">
+      <bpmn:incoming>Flow_1g2zko5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nvtaro</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -158,9 +158,6 @@
         <di:waypoint x="1421" y="120" />
         <di:waypoint x="1452" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Activity_005tiv5_di" bpmnElement="Activity_005tiv5">
-        <dc:Bounds x="1290" y="110" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0j75mh6_di" bpmnElement="Event_0j75mh6">
         <dc:Bounds x="1452" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -191,17 +188,20 @@
           <dc:Bounds x="213" y="215" width="75" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1dr1jq3_di" bpmnElement="Activity_1dr1jq3">
-        <dc:Bounds x="1100" y="200" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1ovzdf8_di" bpmnElement="Activity_1ovzdf8">
-        <dc:Bounds x="1250" y="200" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rezth2_di" bpmnElement="handleCase" bioc:stroke="#1e88e5" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#1e88e5">
         <dc:Bounds x="1000" y="110" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1sgcynt_di" bpmnElement="approveCase">
         <dc:Bounds x="700" y="350" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kaoqmt_di" bpmnElement="archiveCase">
+        <dc:Bounds x="1100" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_087bjvn_di" bpmnElement="sendConfirmation">
+        <dc:Bounds x="1290" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vr79u6_di" bpmnElement="sendRefusal">
+        <dc:Bounds x="1250" y="200" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
