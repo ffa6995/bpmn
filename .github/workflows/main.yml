@@ -41,7 +41,9 @@ jobs:
               mvn jacoco:report
         
       - name: Generate PMD report
-        run: mvn pmd:pmd
+        run: |
+              cd ./template-main
+              mvn pmd:pmd
         
       - name: Push PMD report
         uses: jwgmeligmeyling/pmd-github-action@v1.2
