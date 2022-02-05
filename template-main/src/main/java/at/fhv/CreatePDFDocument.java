@@ -31,7 +31,6 @@ public class CreatePDFDocument {
         Document document = new Document(pdf, PageSize.A4);
         document.setMargins(70f, 70f, 70f, 70f);
 
-        //Erstellen von Text
         Text companyName = new Text("Insurance GmbH | Hochschulstraße 1 | 6850 Dornbirn").setFontSize(9).setUnderline();
         Text personData = new Text(name +"\nMusterstraße 1"+"\n6800 Feldkirch").setFontSize(9);
         Text date = new Text("Date:   "
@@ -43,7 +42,6 @@ public class CreatePDFDocument {
         Text greetings = new Text("Best regards!").setFontSize(11);
         Text team = new Text("Insurance GmbH").setFontSize(11);
 
-        //Erstellen von Paragraphs
         Paragraph paragraph1 = new Paragraph().add(companyName);
         Paragraph paragraph2 = new Paragraph().add(personData);
         Paragraph paragraph3 = new Paragraph().setTextAlignment(TextAlignment.RIGHT).add(date);
@@ -52,8 +50,6 @@ public class CreatePDFDocument {
         Paragraph paragraph7 = new Paragraph().add(greetings);
         Paragraph paragraph8 = new Paragraph().add(team);
 
-
-        //Einfügen der Paragraphe zu dem Dokument
         document.add(paragraph1);
         document.add(paragraph2);
         document.add(paragraph3);
@@ -71,7 +67,6 @@ public class CreatePDFDocument {
         document.close();
 
         System.out.println("Document got created!");
-
     }
 
     static class TextFooterEventHandler implements IEventHandler {

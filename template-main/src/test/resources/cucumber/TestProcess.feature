@@ -15,3 +15,8 @@ Feature: Calculate Remuneration Amount
     When there is damage type of gearboxDamage
     Then remuneration amount is 0
 
+    Scenario: Hallo Dominik
+      Given Dominik is 15 years old
+      When The weather is sunny
+      Then Justin Bieber dies
+
