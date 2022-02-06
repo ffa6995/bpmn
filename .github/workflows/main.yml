@@ -47,8 +47,8 @@ jobs:
       - name: Upload artifact
         uses: actions/setup-java@v2
         with:
-              name: checkstyle
-              path: /**/target/
+          name: checkstyle
+          path: target/
   
   tests:
     runs-on: ubuntu-latest
@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: tests
-          path: /**/target/
+          path: target/
     
   jacoco:
     runs-on: ubuntu-latest
@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jacoco
-          path: /**/target/
+          path: target/
         
   PMD:
     runs-on: ubuntu-latest
