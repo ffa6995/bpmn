@@ -44,8 +44,8 @@ jobs:
       - name: Maven Checkstyle
         run: mvn -ntp site
         
-      - name: cd
-        run: cd
+      - name: ls
+        run: ls
         
       - name: Upload artifact
         uses: actions/setup-java@v2
