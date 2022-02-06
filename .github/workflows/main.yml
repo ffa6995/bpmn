@@ -71,7 +71,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Generate JaCoCo Test Coverage Report
-        run: mvn jacoco:report
+        run: mvn -ntp jacoco:report
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
