@@ -84,7 +84,7 @@
       <bpmn:incoming>Flow_1h6x5pl</bpmn:incoming>
       <bpmn:outgoing>Flow_1g2zko5</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="sendConfirmation" name="Send Confirmation">
+    <bpmn:userTask id="sendConfirmation" name="Send Confirmation" camunda:formKey="embedded:app:forms/send-confirmation.html">
       <bpmn:incoming>Flow_0u5jo8z</bpmn:incoming>
       <bpmn:outgoing>Flow_11bczuq</bpmn:outgoing>
     </bpmn:userTask>
